@@ -1,0 +1,205 @@
+<Form>
+  <Form.Row>
+    <Col xs={7}>
+      <Form.Control placeholder="City" />
+    </Col>
+    <Col>
+      <Form.Control placeholder="State" />
+    </Col>
+    <Col>
+      <Form.Control placeholder="Zip" />
+    </Col>
+  </Form.Row>
+</Form>
+
+
+
+
+
+
+<div className="para-container">
+                          <div className="epidem-container col-md-6 col-sm-12 width=30% ">
+                            <h1 className="head">EPIDEMIOLOGY</h1>
+                            <form className="epidem">
+                              <br />
+                              <br />
+                              <label className="para_name">
+                                Age:
+                                <input type="number" id="ag3" onchange="checkAGE()" required /><span className="error" id="sage" color="red">*</span>
+                              </label>
+                              <br />
+                              <br />
+                              <label className="para_name">
+                                H/O PULMONARY DISEASE:
+                                <input type="checkbox" id="pd" />
+                                <span className="checkmark" onclick="checkPD()" />
+                                <span className="error" id="spul" color="red">*</span>
+                              </label>
+                              <br />
+                              <br />
+                              <label className="para_namer">
+                                H/O CKD:
+                                <input type="checkbox" id="ckd" required />
+                                <span className="checkmark" onclick="checkCKD()" /><span className="error" id="sckd" color="red">*</span>
+                              </label>
+                              <br />
+                              <br />
+                              <label className="para_name">
+                                H/O DM/(HbA1c &gt; 7.6):
+                                <input type="checkbox" id="dm" required />
+                                <span className="checkmark" onclick="checkDM()" /><span className="error" id="sdm" color="red">*</span>
+                              </label>
+                              <br />
+                              <br />
+                              <label className="para_name">
+                                H/O HTN:
+                                <input type="checkbox" id="htn" required />
+                                <span className="checkmark" onclick="checkHTN()" /><span className="error" id="shtn" color="red">*</span>
+                              </label>
+                              <br />
+                              <br />
+                              <label className="para_name">
+                                H/O HIV:
+                                <input type="checkbox" id="hiv" required />
+                                <span className="checkmark" onclick="checkHIV()" /><span className="error" id="shiv" color="red">*</span>
+                              </label>
+                              <br />
+                              <br />
+                              <label className="para_name">
+                                IMMUNOSUPRESSION
+                                <input type="checkbox" id="imt " required />
+                                <span className="checkmark" onclick="checkIMT()" />
+                                <span className="error" id="simt">I</span>
+                                <br />
+                                <br />
+                              </label>
+                            </form>
+                          </div>
+                          <div className="vital-container col-md-6 col-sm-12">
+                            <h1 className="head">VITAL SIGNS</h1>
+                            <form className="vital">
+                              <br />
+                              <br />
+                              <label className="para_name">
+                                RESPIRATORY RATE:
+                                <input type="number" id="rr" onchange="checkRR()" required /><span className="error" id="srr" color="red">*</span>
+                              </label>
+                              <br />
+                              <br />
+                              <label className="para_name">
+                                HEART RATE:
+                                <input type="number" id="hr" onchange="checkHR()" required /><span className="error" id="shr" color="red">*</span>
+                              </label>
+                              <br />
+                              <br />
+                              <label className="para_name">
+                                SPO2:
+                                <input type="number" id="sp" onchange="checkSP()" required /><span className="error" id="sspoe" color="red">*</span>
+                              </label>
+                            </form>
+                          </div>
+                          <div className="lab-findings col-md-6 col-sm-12">
+                            <h1 className="head">LABORATORY FINDINGS</h1>
+                            <form className="lab">
+                              <label className="units">Units</label>
+                              <button type="button" className="not_apg" id="btn_apg" onclick="NA_APG()">N/A</button><br />
+                              <br /><br />
+                              <label className="para_name">
+                                DDimer:
+                                <input type="number" id="dd" onchange="checkDD()" required />
+                                <select id="measure" name="measure">
+                                  <option value={1}>g/mL</option>
+                                  <option value={2}>ml/ml</option>
+                                </select>
+                                <span className="error" id="sage" color="red">*</span>
+                              </label>
+                              <br />
+                              <br />
+                              <label className="para_name">
+                                CPK:
+                                <input type="number" id="cpk" onchange="checkCPK()" required />
+                                <select id="measure" name="measure">
+                                  <option value={1}>U/L</option>
+                                  <option value={2}>G/L</option>
+                                </select>
+                                <span className="error" id="sage" color="red">*</span>
+                              </label>
+                              <br />
+                              <br />
+                              <label className="para_name">
+                                CRP:
+                                <input type="number" id="crp" onchange="checkCRP()" required />
+                                <select id="measure" name="measure">
+                                  <option value={1}>mg/L</option>
+                                  <option value={2}>g/L</option>
+                                </select>
+                                <span className="error" id="sage" color="red">*</span>
+                              </label>
+                              <br />
+                              <br />
+                              <label className="para_name">
+                                LDH:
+                                <input type="number" id="ldh" onchange="checkLDH()" required />
+                                <select id="measure" name="measure">
+                                  <option value={1}>U/L</option>
+                                  <option value={2}>g/L</option>
+                                </select>
+                                <span className="error" id="sage" color="red">*</span>
+                              </label>
+                              <br />
+                              <br />
+                              <label className="para_name">
+                                Troponin:
+                                <input type="number" id="tr" onchange="checkTR()" required />
+                                <select id="measure" name="measure">
+                                  <option value={1}>ng/ml</option>
+                                  <option value={2}>g/mL</option>
+                                </select>
+                                <span className="error" id="sage" color="red">*</span>
+                              </label>
+                              <br />
+                              <br />
+                              <label className="para_name">
+                                Ferritin:
+                                <input type="number" id="fr" onchange="checkFR()" required />
+                                <select id="measure" name="measure">
+                                  <option value={1}>g/L</option>
+                                  <option value={2}>mg/L</option>
+                                </select>
+                                <span className="error" id="sage" color="red">*</span>
+                              </label>
+                              <br />
+                              <br />
+                              <label className="para_name">
+                                Absolute:
+                                <input type="number" id="alc" onchange="checkALC()" />
+                                <select id="measure" name="measure">
+                                  <option value={1}>10^-6/L</option>
+                                  <option value={2}>g/L</option>
+                                </select>
+                                <br />
+                                Lymphocyte
+                                Count<span className="error" id="sage" color="red">*</span>
+                              </label><br />
+                              <label className="para_name">
+                                CT SCAN
+                                <input type="number" id="ct" onchange="checkCT()" />
+                                <select id="measure" name="measure">
+                                  <option value={1}>U/L</option>
+                                  <option value={2}>g/L</option>
+                                </select>
+                                (Corad Score)
+                              </label><br /><br />
+                              <label className="para_name">
+                                ABG:
+                                <input type="number" id="apg" onchange="checkAPG()" />
+                                <select id="measure" name="measure">
+                                  <option value={1}>U/L</option>
+                                  <option value={2}>g/L</option>
+                                </select>
+                                <br />
+                                (P / F ratio)
+                              </label>
+                            </form>
+                          </div>
+                        </div>
