@@ -4,7 +4,7 @@ import './calc.css';
 import './rpage.css';
 import './rpage1.css';
 import './rpage2.css';
-import LayoutTextFields from './LayoutTextFields';
+//import LayoutTextFields from './LayoutTextFields';
 
 
 
@@ -72,7 +72,7 @@ export class Calculator extends Component
                             </div>
                           </div>
                         </div>
-                        <LayoutTextFields/>
+                        
                         <div className="para-container">
                           <div className="epidem-container col-md-6 col-sm-12 width=30% ">
                             <h1 className="head">EPIDEMIOLOGY</h1>

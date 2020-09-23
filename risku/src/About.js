@@ -19,10 +19,10 @@ export class About extends Component {
             <div className="nav-links">
               <ul className="navbar-nav mr-auto">
               <li> 
-              <Link to="/about">AboutUs</Link> 
+              <Link to="/about">ABOUTUS </Link> 
             </li> 
             <li> 
-           <Link to="/login"> Appli</Link> 
+           <Link to="/login"> LOGIN</Link> 
            </li> 
              </ul>
               
