@@ -6,3 +6,5 @@
 then after login redirected to page secform.jsx 3. secform.jsx in{src/LOGIN/components/secform.jsx} AFTER pressing submit button it should be redirected to 4. Calculator.js in{src/cal/calculator.js}
 
 facing problem in linking these four pages have to work on ui too after linking
+js animations dont work after linking
+but it works on separate react files.
