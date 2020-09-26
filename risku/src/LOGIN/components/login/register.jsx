@@ -14,8 +14,61 @@ document.head.appendChild(styleLink);
 export class Register extends React.Component {
   constructor(props) {
     super(props);
-  }
 
+    this.state = {
+      isAuthenticated: false,
+      username: '',
+      email:'',
+      password: '',
+      errors: null
+    };
+  }
+  handleSubmit = e => {
+    e.preventDefault();
+    const {
+      props: { history },
+      state: { username, password,email }
+    } = this;
+    fetch(`${MOCK_SERVICE}/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ username, password, email })
+    })
+      .then(response => response.json())
+      .then(data => {
+        const { username: name, password: pwd, email: eml } = data;
+        if (name === '' || pwd === '' || eml=='') {
+          this.setState({ errors: 'Fields cant be left blank' });
+        }
+        if (name && pwd && eml) {
+          this.setState(
+            {
+              isAuthenticated: true
+            },
+            history.push('/secLogin')
+          );
+        }
+      })
+      .catch(e => {
+        this.setState({ errors: e.error, isAuthenticated: false });
+      });
+  };
+
+  handleChange = (e, data) => {
+    if (data) {
+      this.setState({
+        selectedHospital: data.value
+      });
+    } else {
+      this.setState({
+        [e.target.name]: e.target.value
+      });
+    }
+  };
+
+  
   render() {
     return (
       <div className="base-container" ref={this.props.containerRef}>
@@ -24,26 +77,27 @@ export class Register extends React.Component {
           <div className="image">
             <img src={loginImg} />
           </div>
-          <div className="form">
+          <form onSubmit={this.handleSubmit} className="form">
             <div className="form-group">
               <label htmlFor="username">Username</label>
-              <input type="text" name="username" placeholder="username" />
+              <input type="text" name="username" placeholder="username" onChange={this.handleChange}/>
             </div>
             <div className="form-group">
               <label htmlFor="email">Email</label>
-              <input type="text" name="email" placeholder="email" />
+              <input type="text" name="email" placeholder="email" onChange={this.handleChange} />
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>
-              <input type="text" name="password" placeholder="password" />
+              <input type="text" name="password" placeholder="password" onChange={this.handleChange} />
             </div>
-          </div>
-        </div>
-        <Example/>
-        <div className="footer">
-          <button type="button" className="btn">
+          
+           <Example handleChange={this.handleChange}/>
+        
+          <button type="button" className="btn" onClick={this.onLoginClick}>
             Register
           </button>
+          </form>
+        
         </div>
       </div>
     );
