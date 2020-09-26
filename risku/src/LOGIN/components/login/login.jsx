@@ -1,14 +1,11 @@
-import React from "react";
-import loginImg from "../../bo.jpg";
-import Example from "./Example";
-
-
+import React from 'react';
+import loginImg from '../../bo.jpg';
+import Example from './Example';
 
 // TODO: Switch to https://github.com/palmerhq/the-platform#stylesheet when it will be stable
-const styleLink = document.createElement("link");
-styleLink.rel = "stylesheet";
-styleLink.href =
-  "https://cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.css";
+const styleLink = document.createElement('link');
+styleLink.rel = 'stylesheet';
+styleLink.href = 'https://cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.css';
 document.head.appendChild(styleLink);
 export class Login extends React.Component {
   constructor(props) {
@@ -34,7 +31,7 @@ export class Login extends React.Component {
             </div>
           </div>
         </div>
-        <Example/>
+        <Example />
         <div className="footer">
           <button type="button" className="btn">
             Login
