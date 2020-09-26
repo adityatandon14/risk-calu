@@ -4,6 +4,7 @@ import './calc.css';
 import './rpage.css';
 import './rpage1.css';
 import './rpage2.css';
+import { Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 //import LayoutTextFields from './LayoutTextFields';
 
 
@@ -72,11 +73,11 @@ export class Calculator extends Component
                             </div>
                           </div>
                         </div>
-                        
+                      <Form>
                         <div className="para-container">
                           <div className="epidem-container col-md-6 col-sm-12 width=30% ">
                             <h1 className="head">EPIDEMIOLOGY</h1>
-                            <form className="epidem">
+                            
                               <br />
                               <br />
                               <label className="para_name">
@@ -129,11 +130,11 @@ export class Calculator extends Component
                                 <br />
                                 <br />
                               </label>
-                            </form>
+                            
                           </div>
                           <div className="vital-container col-md-6 col-sm-12">
                             <h1 className="head">VITAL SIGNS</h1>
-                            <form className="vital">
+                            
                               <br />
                               <br />
                               <label className="para_name">
@@ -152,11 +153,11 @@ export class Calculator extends Component
                                 SPO2:
                                 <input type="number" id="sp" onchange="checkSP()" required /><span className="error" id="sspoe" color="red">*</span>
                               </label>
-                            </form>
+                            
                           </div>
                           <div className="lab-findings col-md-6 col-sm-12">
                             <h1 className="head">LABORATORY FINDINGS</h1>
-                            <form className="lab">
+                            
                               <label className="units">Units</label>
                               <button type="button" className="not_apg" id="btn_apg" onclick="NA_APG()">N/A</button><br />
                               <br /><br />
@@ -227,15 +228,14 @@ export class Calculator extends Component
                               <br />
                               <br />
                               <label className="para_name">
-                                Absolute:
+                                Absolute LC:
                                 <input type="number" id="alc" onchange="checkALC()" />
                                 <select id="measure" name="measure">
                                   <option value={1}>10^-6/L</option>
                                   <option value={2}>g/L</option>
                                 </select>
                                 <br />
-                                Lymphocyte
-                                Count<span className="error" id="sage" color="red">*</span>
+                                <span className="error" id="sage" color="red">*</span>
                               </label><br />
                               <label className="para_name">
                                 CT SCAN
@@ -256,13 +256,15 @@ export class Calculator extends Component
                                 <br />
                                 (P / F ratio)
                               </label>
-                            </form>
-                          </div>
+                            
+                         
+                        </div>
                         </div>
                         <div className="btype">
-                          <button type="button" id="sub" onclick="checkParam()">CHECK PARAMETERS</button>
-                          <button type="button" id="npat" onclick="newpage()">NEW PATIENT</button>
+                        <button type="button" id="sub" onclick="checkParam()">CHECK PARAMETERS</button>
+                        <button type="button" id="npat" onclick="newpage()">NEW PATIENT</button>
                         </div>
+                        </Form>
                         <a href="https://forms.gle/3yrDBz4CeLhnW4kX8" target="_blank">
                           <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">Please help us
                             to contribute more by providing your valuable feedback</marquee>

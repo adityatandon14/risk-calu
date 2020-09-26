@@ -247,6 +247,7 @@ header {
 
 @media (max-width: 300px) {
   .navbar-nav {
+    
     flex: initial;
     width: 100%;
   }
@@ -329,7 +330,7 @@ h2 {
 p {
   text-align: center;
 }
-/* .DomainsHeading
+ .DomainsHeading
   {
     height: 80px;
     width: 100vw;
@@ -340,7 +341,7 @@ p {
     background-position: center center;
     opacity:0.8;
     color: #19a4de;
-  } */
+  } 
 .DomainsHeading .Heading {
   color: #19a4de;
   font-size: 400%;
