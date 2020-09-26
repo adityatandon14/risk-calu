@@ -1,6 +1,7 @@
 {
   "login": {
     "username": "kasi.araveeti@publicissapient.com",
-    "password": "Sapient@01"
+    "password": "Sapient@01",
+    "selectedHospital": "KMC MANGLORE"
   }
 }

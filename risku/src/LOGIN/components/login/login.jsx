@@ -15,6 +15,7 @@ export class Login extends React.Component {
 
     this.state = {
       isAuthenticated: false,
+      selectedHospital: '',
       username: '',
       password: '',
       errors: null
@@ -25,22 +26,22 @@ export class Login extends React.Component {
     e.preventDefault();
     const {
       props: { history },
-      state: { username, password }
+      state: { username, password, selectedHospital }
     } = this;
     fetch(`${MOCK_SERVICE}/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ username, password })
+      body: JSON.stringify({ username, password, selectedHospital })
     })
       .then(response => response.json())
       .then(data => {
-        const { username: name, password: pwd } = data;
+        const { username: name, password: pwd, selectedHospital: selectedHos } = data;
         if (name === '' || pwd === '') {
           this.setState({ errors: 'Fields cant be left blank' });
         }
-        if (name && pwd) {
+        if (name && pwd && selectedHos) {
           this.setState(
             {
               isAuthenticated: true
@@ -72,10 +73,16 @@ export class Login extends React.Component {
   //     this.setState({ errors: e.error});
   //   });
 
-  handleChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
+  handleChange = (e, data) => {
+    if (data) {
+      this.setState({
+        selectedHospital: data.value
+      });
+    } else {
+      this.setState({
+        [e.target.name]: e.target.value
+      });
+    }
   };
 
   render() {
@@ -95,7 +102,7 @@ export class Login extends React.Component {
               <label htmlFor="password">Password</label>
               <input type="password" name="password" placeholder="password" onChange={this.handleChange} />
             </div>
-            <Example />
+            <Example handleChange={this.handleChange} />
             <button type="submit" className="btn" onClick={this.onLoginClick}>
               Login
             </button>
