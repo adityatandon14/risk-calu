@@ -54,6 +54,24 @@ export class Login extends React.Component {
       });
   };
 
+  // fetch(`${MOCK_SERVICE}/login`, {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json'
+  //   }
+  //   body: JSON.stringify({ username, password }),
+  // })
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     if (!data.isAuthenticated) {
+  //       this.setState({ errors: 'Fields cant be left blank' });
+  //     }
+  //         history.push('/secLogin')
+  //   })
+  //   .catch(e => {
+  //     this.setState({ errors: e.error});
+  //   });
+
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
