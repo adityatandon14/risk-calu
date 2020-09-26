@@ -2,6 +2,7 @@ import React from 'react';
 
 import About from './About';
 import Appli from './LOGIN/Appli';
+import secForm from './LOGIN/components/login/secform';
 
 import Calculator from './Cal/Calculator';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -14,6 +15,8 @@ function App() {
           <Route exact path="/" component={About}></Route>
           <Route exact path="/about" component={About}></Route>
           <Route exact path="/login" component={Appli}></Route>
+          <Route exact path="/secLogin" component={secForm}></Route>
+          <Route exact path="/calculator" component={Calculator}></Route>
           <Route exact path="/calculator" component={Calculator}></Route>
         </Switch>
       </div>

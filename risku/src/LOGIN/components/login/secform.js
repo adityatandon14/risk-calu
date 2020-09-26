@@ -1,18 +1,17 @@
-import React from 'react'
-import { Button, Checkbox, Form } from 'semantic-ui-react'
+import React from 'react';
+import { Button, Checkbox, Form } from 'semantic-ui-react';
 
 const secform = () => (
   <Form>
-    
     <Form.Field>
       <label>ENTER PATIENT ID</label>
-      <input placeholder='ID' />
+      <input placeholder="ID" />
     </Form.Field>
     <Form.Field>
-      <Checkbox label='I agree to the Terms and Conditions' />
+      <Checkbox label="I agree to the Terms and Conditions" />
     </Form.Field>
-    <Button type='submit'>Submit</Button>
+    <Button type="submit">Submit</Button>
   </Form>
-)
+);
 
 export default secform;

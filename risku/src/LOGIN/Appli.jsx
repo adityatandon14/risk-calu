@@ -46,7 +46,7 @@ class Appli extends React.Component {
       <div className="Appli">
         <div className="login">
           <div className="container">
-            {isLogginActive && <Login containerRef={ref => (this.current = ref)} />}
+            {isLogginActive && <Login containerRef={ref => (this.current = ref)} history={this.props.history} />}
             {!isLogginActive && <Register containerRef={ref => (this.current = ref)} />}
           </div>
           <RightSide

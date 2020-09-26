@@ -1,8 +1,10 @@
 import React from 'react';
 import loginImg from '../../bo.jpg';
 import Example from './Example';
+import { Link } from 'react-router-dom';
 
 // TODO: Switch to https://github.com/palmerhq/the-platform#stylesheet when it will be stable
+const MOCK_SERVICE = 'http://localhost:3004';
 const styleLink = document.createElement('link');
 styleLink.rel = 'stylesheet';
 styleLink.href = 'https://cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.css';
@@ -10,7 +12,53 @@ document.head.appendChild(styleLink);
 export class Login extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      isAuthenticated: false,
+      username: '',
+      password: '',
+      errors: null
+    };
   }
+
+  handleSubmit = e => {
+    e.preventDefault();
+    const {
+      props: { history },
+      state: { username, password }
+    } = this;
+    fetch(`${MOCK_SERVICE}/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ username, password })
+    })
+      .then(response => response.json())
+      .then(data => {
+        const { username: name, password: pwd } = data;
+        if (name === '' || pwd === '') {
+          this.setState({ errors: 'Fields cant be left blank' });
+        }
+        if (name && pwd) {
+          this.setState(
+            {
+              isAuthenticated: true
+            },
+            history.push('/secLogin')
+          );
+        }
+      })
+      .catch(e => {
+        this.setState({ errors: e.error, isAuthenticated: false });
+      });
+  };
+
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
 
   render() {
     return (
@@ -20,22 +68,20 @@ export class Login extends React.Component {
           <div className="image">
             <img src={loginImg} />
           </div>
-          <div className="form">
+          <form onSubmit={this.handleSubmit} className="form">
             <div className="form-group">
               <label htmlFor="username">Username</label>
-              <input type="text" name="username" placeholder="username" />
+              <input type="text" name="username" placeholder="username" onChange={this.handleChange} />
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>
-              <input type="password" name="password" placeholder="password" />
+              <input type="password" name="password" placeholder="password" onChange={this.handleChange} />
             </div>
-          </div>
-        </div>
-        <Example />
-        <div className="footer">
-          <button type="button" className="btn">
-            Login
-          </button>
+            <Example />
+            <button type="submit" className="btn" onClick={this.onLoginClick}>
+              Login
+            </button>
+          </form>
         </div>
       </div>
     );
