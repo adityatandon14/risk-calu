@@ -5,6 +5,7 @@ import Appli from './LOGIN/Appli';
 import secForm from './LOGIN/components/login/secform';
 
 import Calculator from './Cal/Calculator';
+
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
           <Route exact path="/login" component={Appli}></Route>
           <Route exact path="/secLogin" component={secForm}></Route>
           <Route exact path="/calculator" component={Calculator}></Route>
-          <Route exact path="/calculator" component={Calculator}></Route>
+         
         </Switch>
       </div>
     </Router>
