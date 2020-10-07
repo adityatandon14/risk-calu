@@ -347,28 +347,8 @@ export class Calculator extends Component {
                     options={options}
                   />
                 </div>
-                <Container>
-                <Row>
-                  <Col sm={8}>sm=8</Col>
-                  <Col sm={4}>sm=4</Col>
-                </Row>
-                <Row>
-                  <Col sm>sm=true</Col>
-                  <Col sm>sm=true</Col>
-                  <Col sm>sm=true</Col>
-                </Row>
-              </Container>
-              <Row>
-    <Col xs={6} md={4}>
-      xs=6 md=4
-    </Col>
-    <Col xs={6} md={4}>
-      xs=6 md=4
-    </Col>
-    <Col xs={6} md={4}>
-      xs=6 md=4
-    </Col>
-  </Row>
+
+   
 
                 <h1 className="head">VITAL SIGNS</h1>
 
