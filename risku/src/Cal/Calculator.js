@@ -4,11 +4,14 @@ import "./calc.css";
 import "./rpage.css";
 import "./rpage1.css";
 import "./rpage2.css";
+import Container from 'react-bootstrap/Container';
 import { Dropdown } from "semantic-ui-react";
 import { Checkbox } from "semantic-ui-react";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
+import Row from 'react-bootstrap/Row';
 
+import Col from 'react-bootstrap/Col';
 import Select from "@material-ui/core/Select";
 import Chip from "@material-ui/core/Chip";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -104,6 +107,8 @@ export class Calculator extends Component {
   render() {
     const conditionalRendering = (
       <div>
+      <div className="lab">
+      <div className="col-3 col-md-2 mb-1">
         <h1 className="head">LABORATORY FINDINGS</h1>
         <label className="para_name">
           DDIMER:
@@ -111,7 +116,7 @@ export class Calculator extends Component {
             placeholder="DDIMER"
             color="red"
             type="number"
-            id="dd"
+            id="ddimer"
             onchange="checkDD()"
             required
           />
@@ -167,7 +172,7 @@ export class Calculator extends Component {
         <br />
         <label className="para_name">
           Troponin:
-          <input type="number" id="tr" onchange="checkTR()" required />
+          <input type="number" id="tropo" onchange="checkTR()" required />
           <select id="measure" name="measure">
             <option value={1}>ng/ml</option>
             <option value={2}>g/mL</option>
@@ -180,7 +185,7 @@ export class Calculator extends Component {
         <br />
         <label className="para_name">
           Ferritin:
-          <input type="number" id="fr" onchange="checkFR()" required />
+          <input type="number" id="ferr" onchange="checkFR()" required />
           <select id="measure" name="measure">
             <option value={1}>g/L</option>
             <option value={2}>mg/L</option>
@@ -193,7 +198,7 @@ export class Calculator extends Component {
         <br />
         <label className="para_name">
           Absolute LC:
-          <input type="number" id="alc" onchange="checkALC()" />
+          <input type="number" id="abg" onchange="checkALC()" />
           <select id="measure" name="measure">
             <option value={1}>10^-6/L</option>
             <option value={2}>g/L</option>
@@ -206,7 +211,7 @@ export class Calculator extends Component {
         <br />
         <label className="para_name">
           CT SCAN
-          <input type="number" id="ct" onchange="checkCT()" />
+          <input type="number" id="ctscan" onchange="checkCT()" />
           <select id="measure" name="measure">
             <option value={1}>U/L</option>
             <option value={2}>g/L</option>
@@ -217,7 +222,7 @@ export class Calculator extends Component {
         <br />
         <label className="para_name">
           ABG:
-          <input type="number" id="apg" onchange="checkAPG()" />
+          <input type="number" id="abg" onchange="checkAPG()" />
           <select id="measure" name="measure">
             <option value={1}>U/L</option>
             <option value={2}>g/L</option>
@@ -225,6 +230,8 @@ export class Calculator extends Component {
           <br />
           (P / F ratio)
         </label>
+        </div>
+        </div>
       </div>
     );
 
@@ -340,14 +347,38 @@ export class Calculator extends Component {
                     options={options}
                   />
                 </div>
+                <Container>
+                <Row>
+                  <Col sm={8}>sm=8</Col>
+                  <Col sm={4}>sm=4</Col>
+                </Row>
+                <Row>
+                  <Col sm>sm=true</Col>
+                  <Col sm>sm=true</Col>
+                  <Col sm>sm=true</Col>
+                </Row>
+              </Container>
+              <Row>
+    <Col xs={6} md={4}>
+      xs=6 md=4
+    </Col>
+    <Col xs={6} md={4}>
+      xs=6 md=4
+    </Col>
+    <Col xs={6} md={4}>
+      xs=6 md=4
+    </Col>
+  </Row>
 
                 <h1 className="head">VITAL SIGNS</h1>
 
                 <br />
                 <br />
+                <div className="row">
+                <div className="col-3 col-md-2 mb-1">
                 <label className="para_name">
                   RESPIRATORY RATE:
-                  <input type="number" id="rr" onchange="checkRR()" required />
+                  <input type="number" id="resrate" onchange="checkRR()" required />
                   <span className="error" id="srr" color="red">
                     *
                   </span>
@@ -356,7 +387,7 @@ export class Calculator extends Component {
                 <br />
                 <label className="para_name">
                   HEART RATE:
-                  <input type="number" id="hr" onchange="checkHR()" required />
+                  <input type="number" id="heartrate" onchange="checkHR()" required />
                   <span className="error" id="shr" color="red">
                     *
                   </span>
@@ -365,11 +396,43 @@ export class Calculator extends Component {
                 <br />
                 <label className="para_name">
                   SPO2:
-                  <input type="number" id="sp" onchange="checkSP()" required />
+                  <input type="number" id="spo" onchange="checkSP()" required />
                   <span className="error" id="sspoe" color="red">
                     *
                   </span>
                 </label>
+                
+               
+                <div className="row ">
+                  <div className="col-6 col-md-2 mb-3">
+                    <label className="para_name">
+                      RESPIRATORY RATE:
+                      <input type="number" id="resrate" onchange="checkRR()" required />
+                      <span className="error" id="srr" color="red">
+                        *
+                      </span>
+                    </label>
+            
+                    <label className="para_name">
+                      HEART RATE:
+                      <input type="number" id="heartrate" onchange="checkHR()" required />
+                      <span className="error" id="shr" color="red">
+                        *
+                      </span>
+                    </label>
+            
+                    <label className="para_name">
+                      SPO2:
+                      <input type="number" id="spo" onchange="checkSP()" required />
+                      <span className="error" id="sspoe" color="red">
+                        *
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              
+                </div>
+                </div>
                 <br>
                 </br>
                 <Checkbox

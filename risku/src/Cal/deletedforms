@@ -417,3 +417,42 @@ export class Calculator extends Component
             
 
 export default Calculator
+
+
+
+
+                <h1 className="head">VITAL SIGNS</h1>
+
+                <br />
+                <br />
+                <div className="row">
+                <div className="col-3 col-md-2 mb-1">
+                <label className="para_name">
+                  RESPIRATORY RATE:
+                  <input type="number" id="rr" onchange="checkRR()" required />
+                  <span className="error" id="srr" color="red">
+                    *
+                  </span>
+                </label>
+                <br />
+                <br />
+                <label className="para_name">
+                  HEART RATE:
+                  <input type="number" id="hr" onchange="checkHR()" required />
+                  <span className="error" id="shr" color="red">
+                    *
+                  </span>
+                </label>
+                <br />
+                <br />
+                <label className="para_name">
+                  SPO2:
+                  <input type="number" id="sp" onchange="checkSP()" required />
+                  <span className="error" id="sspoe" color="red">
+                    *
+                  </span>
+                </label>
+                </div>
+                </div>
+                <br>
+                </br>
