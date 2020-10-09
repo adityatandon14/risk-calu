@@ -181,6 +181,7 @@ pre {
 }
 .btype {
   text-align: center;
+  
 }
 @media (-webkit-min-device-pixel-ratio: 2) and (-webkit-max-device-pixel-ratio: 2.9) {
   * {
