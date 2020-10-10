@@ -84,65 +84,97 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const MOCK_SERVICE = 'http://localhost:3004';
+
 export class Calculator extends Component {
   // const classes = useStyles();
   constructor() {
     super();
     this.state = {
+      checked: false,
       spo: '',
-      hearrate: '',
-      resrate: ''
+      heartRate: '',
+      resRate: '',
+      drpdownValue: '',
+      ddimer: '',
+      cpk: '',
+      crp: '',
+      ldh: '',
+      tropo: '',
+      ferr: '',
+      absolute: '',
+      ctscan: '',
+      abg: '',
+      checkAbg: '',
+      measure_ddimer: 1,
+      measure_cpk: 1,
+      measure_crp: 1,
+      measure_ldh: 1,
+      measure_tropo: 1,
+      measure_ferr: 1,
+      measure_absolute: 1,
+      measure_ctscan: 1,
+      measure_abg: 1,
+      measure_checkAbg: 1
     };
     this.changeBind = this.changeBind.bind(this);
   }
   changeBind() {
     this.setState({ checked: !this.state.checked });
   }
-
   handleChange = e => {
-    const { value, id } = e.target;
+    const { id, value } = e.target;
     this.setState({ [id]: value });
   };
-  // constructor(props) {
-  //   super(props);
 
-  //   this.state = {
-  //     age:'',
-  //     hpd:false,
-  //     dm:false,
-  //     htn:false,
-  //     hiv:false,
-  //     trans:false,
-  //     resrate:'',
-  //     heartrate:'',
-  //     spo:'',
-  //     ddimer:'',
-  //     cpk:'',
-  //     crp:'',
-  //     ldh:'',
-  //     tropo:'',
-  //     ferr:'',
-  //     absolute:'',
-  //     ctscan:'',
-  //     abg:'',
-  //     errors: null
-  //   };
-  // }
-  // handleSubmit = e => {
-  //   e.preventDefault();
-  //   const {
-  //     props: { history },
-  //     state: { age, hpd,dm,htn,hiv,trans,resrate,heartrate,spo,ddimer,cpk,crp,ldh,tropo,ferr,absolute,ctscan,abg}
-  //   } = this;
-  //   fetch(`${MOCK_SERVICE}/login`, {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'calculate/json'
-  //     },
-  //     body: JSON.stringify({ age, hpd,dm,htn,hiv,trans,resrate,heartrate,spo,ddimer,cpk,crp,ldh,tropo,ferr,absolute,ctscan,abg}
-  //   })
+  handleDropDownChange = (e, { value }) => {
+    this.setState({ drpdownValue: value });
+  };
 
-  // };
+  handleLabFindings = e => {
+    const { id, value } = e.target;
+    const meaureToCheck = `measure_${id}`;
+    console.log(meaureToCheck, 'meaureToCheck');
+    if (this.state[meaureToCheck] === '2') {
+      this.setState({ [id]: value * 1000 });
+    } else {
+      this.setState({ [id]: value });
+    }
+  };
+
+  handleSubmit = e => {
+    const {
+      state: { spo, heartRate, resRate, drpdownValue, ddimer, cpk, crp, ldh, tropo, ferr, absolute, ctscan, abg }
+    } = this;
+
+    try {
+      fetch(`${MOCK_SERVICE}/calculator`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          spo,
+          heartRate,
+          resRate,
+          drpdownValue,
+          ddimer,
+          cpk,
+          crp,
+          ldh,
+          tropo,
+          ferr,
+          absolute,
+          ctscan,
+          abg
+        })
+      })
+        .then(response => response.json())
+        .then(data => {});
+    } catch (e) {
+      console.error('error');
+    }
+  };
 
   render() {
     const hidden = this.state.checked ? '' : 'hidden';
@@ -155,7 +187,15 @@ export class Calculator extends Component {
             <div className="epidem-container col-md-6 col-sm-12 width=30% ">
               <h1 className="head">EPIDEMIOLOGY</h1>
               <div className="yoyo">
-                <Dropdown placeholder="Comorbidities" fluid multiple selection options={options} />
+                <Dropdown
+                  placeholder="Comorbidities"
+                  fluid
+                  multiple
+                  selection
+                  options={options}
+                  // onChange={() =>this.handleDropDownChange(e, data, 'drpdownValue')}
+                  onChange={this.handleDropDownChange}
+                />
               </div>
 
               <h1 className="head">VITAL SIGNS</h1>
@@ -166,7 +206,7 @@ export class Calculator extends Component {
                 <div className="col-3 col-md-2 mb-1">
                   <label className="para_name">
                     RESPIRATORY RATE:
-                    <input type="number" id="resrate" onchange="checkRR()" required onChange={this.handleChange} />
+                    <input type="number" id="resRate" required onChange={this.handleChange} />
                   </label>
                   <span className="error" id="srr" color="red">
                     *
@@ -175,7 +215,7 @@ export class Calculator extends Component {
                   <br />
                   <label className="para_name">
                     HEART RATE:
-                    <input type="number" id="heartrate" onchange="checkHR()" required onChange={this.handleChange} />
+                    <input type="number" id="heartRate" required onChange={this.handleChange} />
                     <span className="error" id="shr" color="red">
                       *
                     </span>
@@ -184,7 +224,7 @@ export class Calculator extends Component {
                   <br />
                   <label className="para_name">
                     SPO2:
-                    <input type="number" id="spo" onchange="checkSP()" required onChange={this.handleChange} />
+                    <input type="number" id="spo" required onChange={this.handleChange} />
                     <span className="error" id="sspoe" color="red">
                       *
                     </span>
@@ -204,8 +244,15 @@ export class Calculator extends Component {
                     <h1 className="head">LABORATORY FINDINGS</h1>
                     <label className="para_name">
                       DDIMER:
-                      <input placeholder="DDIMER" color="red" type="number" id="ddimer" onchange="checkDD()" required />
-                      <select id="measure" name="measure">
+                      <input
+                        placeholder="DDIMER"
+                        color="red"
+                        type="number"
+                        id="ddimer"
+                        onChange={this.handleLabFindings}
+                        required
+                      />
+                      <select id="measure_ddimer" name="measure" onChange={this.handleChange}>
                         <option value={1}>g/mL</option>
                         <option value={2}>ml/ml</option>
                       </select>
@@ -217,8 +264,8 @@ export class Calculator extends Component {
                     <br />
                     <label className="para_name">
                       CPK:
-                      <input type="number" id="cpk" onchange="checkCPK()" required />
-                      <select id="measure" name="measure">
+                      <input type="number" id="cpk" required onChange={this.handleLabFindings} />
+                      <select id="measure_cpk" name="measure" onChange={this.handleChange}>
                         <option value={1}>U/L</option>
                         <option value={2}>G/L</option>
                       </select>
@@ -230,8 +277,8 @@ export class Calculator extends Component {
                     <br />
                     <label className="para_name">
                       CRP:
-                      <input type="number" id="crp" onchange="checkCRP()" required />
-                      <select id="measure" name="measure">
+                      <input type="number" id="crp" required onChange={this.handleLabFindings} />
+                      <select id="measure_crp" name="measure" onChange={this.handleChange}>
                         <option value={1}>mg/L</option>
                         <option value={2}>g/L</option>
                       </select>
@@ -243,8 +290,8 @@ export class Calculator extends Component {
                     <br />
                     <label className="para_name">
                       LDH:
-                      <input type="number" id="ldh" onchange="checkLDH()" required />
-                      <select id="measure" name="measure">
+                      <input type="number" id="ldh" required onChange={this.handleLabFindings} />
+                      <select id="measure_ldh" name="measure" onChange={this.handleChange}>
                         <option value={1}>U/L</option>
                         <option value={2}>g/L</option>
                       </select>
@@ -256,8 +303,8 @@ export class Calculator extends Component {
                     <br />
                     <label className="para_name">
                       Troponin:
-                      <input type="number" id="tropo" onchange="checkTR()" required />
-                      <select id="measure" name="measure">
+                      <input type="number" id="tropo" onChange={this.handleLabFindings} required />
+                      <select id="measure_tropo" name="measure" onChange={this.handleChange}>
                         <option value={1}>ng/ml</option>
                         <option value={2}>g/mL</option>
                       </select>
@@ -269,8 +316,8 @@ export class Calculator extends Component {
                     <br />
                     <label className="para_name">
                       Ferritin:
-                      <input type="number" id="ferr" onchange="checkFR()" required />
-                      <select id="measure" name="measure">
+                      <input type="number" id="ferr" onChange={this.handleLabFindings} required />
+                      <select id="measure_ferr" name="measure" onChange={this.handleChange}>
                         <option value={1}>g/L</option>
                         <option value={2}>mg/L</option>
                       </select>
@@ -282,8 +329,8 @@ export class Calculator extends Component {
                     <br />
                     <label className="para_name">
                       Absolute LC:
-                      <input type="number" id="abg" onchange="checkALC()" />
-                      <select id="measure" name="measure">
+                      <input type="number" id="abg" onChange={this.handleLabFindings} />
+                      <select id="measure_abg" name="measure" onChange={this.handleChange}>
                         <option value={1}>10^-6/L</option>
                         <option value={2}>g/L</option>
                       </select>
@@ -295,8 +342,8 @@ export class Calculator extends Component {
                     <br />
                     <label className="para_name">
                       CT SCAN
-                      <input type="number" id="ctscan" onchange="checkCT()" />
-                      <select id="measure" name="measure">
+                      <input type="number" id="ctscan" />
+                      <select id="measure_ctscan" name="measure" onChange={this.handleChange}>
                         <option value={1}>U/L</option>
                         <option value={2}>g/L</option>
                       </select>
@@ -305,8 +352,8 @@ export class Calculator extends Component {
                     <br />
                     <label className="para_name">
                       ABG:
-                      <input type="number" id="abg" onchange="checkAPG()" />
-                      <select id="measure" name="measure">
+                      <input type="number" id="checkAbg" onChange={this.handleLabFindings} />
+                      <select id="measure_checkAbg" name="measure" onChange={this.handleChange}>
                         <option value={1}>U/L</option>
                         <option value={2}>g/L</option>
                       </select>
@@ -319,11 +366,8 @@ export class Calculator extends Component {
             </div>
           </div>
           <div className="btype">
-            <button type="button" id="sub" onclick="checkParam()">
+            <button type="submit" id="sub" onClick={this.handleSubmit}>
               CHECK PARAMETERS
-            </button>
-            <button type="button" id="npat" onclick="newpage()">
-              NEW PATIENT
             </button>
           </div>
         </form>
