@@ -97,12 +97,25 @@ export class Calculator extends Component {
   constructor() {
     super();
     this.state = {
-      checked: false
+      checked: false,
+      spo: '',
+      heartRate: '',
+      resRate: '',
+      drpdownValue: ''
     };
     this.changeBind = this.changeBind.bind(this);
   }
   changeBind() {
     this.setState({ checked: !this.state.checked });
+  }
+  handleChange = (e) => {
+    const {id, value} = e.target;
+    this.setState({[id]: value}); 
+  }
+
+  handleDropDownChange = (e, {value}) => {
+    this.setState({drpdownValue: value}); 
+
   }
   // constructor(props) {
   //   super(props);
@@ -162,6 +175,7 @@ export class Calculator extends Component {
                   multiple
                   selection
                   options={options}
+                  onChange={this.handleDropDownChange}
                 />
               </div>
 
@@ -175,9 +189,11 @@ export class Calculator extends Component {
                     RESPIRATORY RATE:
                     <input
                       type="number"
-                      id="resrate"
+                      id="resRate"
                       onchange="checkRR()"
                       required
+                  onChange={this.handleChange}
+
                     />
                   </label>
                   <span className="error" id="srr" color="red">
@@ -189,9 +205,11 @@ export class Calculator extends Component {
                     HEART RATE:
                     <input
                       type="number"
-                      id="heartrate"
+                      id="heartRate"
                       onchange="checkHR()"
                       required
+                  onChange={this.handleChange}
+
                     />
                     <span className="error" id="shr" color="red">
                       *
@@ -206,6 +224,8 @@ export class Calculator extends Component {
                       id="spo"
                       onchange="checkSP()"
                       required
+                  onChange={this.handleChange}
+
                     />
                     <span className="error" id="sspoe" color="red">
                       *
