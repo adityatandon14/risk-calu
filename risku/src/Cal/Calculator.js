@@ -113,8 +113,8 @@ export class Calculator extends Component {
     this.setState({[id]: value}); 
   }
 
-  handleDropDownChange = (e, {value}, stateRef) => {
-    this.setState({ [stateRef]: value}); 
+  handleDropDownChange = (e, {value}) => {
+    this.setState({ drpdownValue: value}); 
 
   }
   // constructor(props) {
@@ -175,7 +175,11 @@ export class Calculator extends Component {
                   multiple
                   selection
                   options={options}
+<<<<<<< HEAD
                  // onChange={() =>this.handleDropDownChange(e, data, 'drpdownValue')}
+=======
+                  onChange={ this.handleDropDownChange}
+>>>>>>> b2e1c6b79dc8fcd2972290a6de8bc4255a6d8c66
                 />
               </div>
 
