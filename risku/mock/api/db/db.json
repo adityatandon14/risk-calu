@@ -3,5 +3,20 @@
     "username": "abc@gmail.com",
     "password": "nothing",
     "selectedHospital": "KMC MANGLORE"
+  },
+  "calculator": {
+    "spo": "1212",
+    "heartRate": "2121",
+    "resRate": "12121",
+    "drpdownValue": "",
+    "ddimer": "",
+    "cpk": "",
+    "crp": "",
+    "ldh": "",
+    "tropo": "",
+    "ferr": "",
+    "absolute": "",
+    "ctscan": "",
+    "abg": ""
   }
 }
