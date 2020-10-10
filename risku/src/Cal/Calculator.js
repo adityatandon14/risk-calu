@@ -175,7 +175,7 @@ export class Calculator extends Component {
                   multiple
                   selection
                   options={options}
-                  onChange={() =>this.handleDropDownChange(e, data, 'drpdownValue')}
+                 // onChange={() =>this.handleDropDownChange(e, data, 'drpdownValue')}
                 />
               </div>
 
@@ -251,7 +251,8 @@ export class Calculator extends Component {
                         color="red"
                         type="number"
                         id="ddimer"
-                        onchange="checkDD()"
+                        onchange={this.handleChange}
+                        onChange={this.handleChange}
                         required
                       />
                       <select id="measure" name="measure">
@@ -269,7 +270,8 @@ export class Calculator extends Component {
                       <input
                         type="number"
                         id="cpk"
-                        onchange="checkCPK()"
+                        onchange={this.handleChange}
+                        onChange={this.handleChange}
                         required
                       />
                       <select id="measure" name="measure">
@@ -288,6 +290,7 @@ export class Calculator extends Component {
                         type="number"
                         id="crp"
                         onchange="checkCRP()"
+                        onChange={this.handleChange}
                         required
                       />
                       <select id="measure" name="measure">
@@ -306,6 +309,7 @@ export class Calculator extends Component {
                         type="number"
                         id="ldh"
                         onchange="checkLDH()"
+                        onChange={this.handleChange}
                         required
                       />
                       <select id="measure" name="measure">
@@ -324,6 +328,7 @@ export class Calculator extends Component {
                         type="number"
                         id="tropo"
                         onchange="checkTR()"
+                        onChange={this.handleChange}
                         required
                       />
                       <select id="measure" name="measure">
@@ -342,6 +347,7 @@ export class Calculator extends Component {
                         type="number"
                         id="ferr"
                         onchange="checkFR()"
+                        onChange={this.handleChange}
                         required
                       />
                       <select id="measure" name="measure">
@@ -356,7 +362,7 @@ export class Calculator extends Component {
                     <br />
                     <label className="para_name">
                       Absolute LC:
-                      <input type="number" id="abg" onchange="checkALC()" />
+                      <input type="number" id="abg" onchange="checkALC()" onChange={this.handleChange} />
                       <select id="measure" name="measure">
                         <option value={1}>10^-6/L</option>
                         <option value={2}>g/L</option>
@@ -369,7 +375,7 @@ export class Calculator extends Component {
                     <br />
                     <label className="para_name">
                       CT SCAN
-                      <input type="number" id="ctscan" onchange="checkCT()" />
+                      <input type="number" id="ctscan" onchange="checkCT()" onChange={this.handleChange} />
                       <select id="measure" name="measure">
                         <option value={1}>U/L</option>
                         <option value={2}>g/L</option>
@@ -379,7 +385,7 @@ export class Calculator extends Component {
                     <br />
                     <label className="para_name">
                       ABG:
-                      <input type="number" id="abg" onchange="checkAPG()" />
+                      <input type="number" id="abg" onchange="checkAPG()" onChange={this.handleChange} />
                       <select id="measure" name="measure">
                         <option value={1}>U/L</option>
                         <option value={2}>g/L</option>
@@ -396,9 +402,7 @@ export class Calculator extends Component {
             <button type="button" id="sub" onclick="checkParam()">
               CHECK PARAMETERS
             </button>
-            <button type="button" id="npat" onclick="newpage()">
-              NEW PATIENT
-            </button>
+            
           </div>
         </form>
       </div>
