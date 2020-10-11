@@ -83,7 +83,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(3)
   }
 }));
-
+/*api */
 const MOCK_SERVICE = 'http://localhost:3004';
 /*api ka name and defining all parameter*/
 export class Calculator extends Component {
@@ -120,19 +120,26 @@ export class Calculator extends Component {
     this.changeBind = this.changeBind.bind(this);
   }
   /*for the checked box*/
+
   changeBind() {
     this.setState({ checked: !this.state.checked });
   }
+
   /*for all the values getting filled*/
+
   handleChange = e => {
     const { id, value } = e.target;
     this.setState({ [id]: value });
   };
+
 /*dropdown ki values set ke lie*/
+
   handleDropDownChange = (e, { value }) => {
     this.setState({ drpdownValue: value });
   };
+
 /*this function is for units change if its sec unit multiply by 1000 and send the values*/
+
   handleLabFindings = e => {
     const { id, value } = e.target;
     const meaureToCheck = `measure_${id}`;
@@ -143,12 +150,16 @@ export class Calculator extends Component {
       this.setState({ [id]: value });
     }
   };
+
 /*form submit button*/
+
   handleSubmit = e => {
     const {
       state: { spo, heartRate, resRate, drpdownValue, ddimer, cpk, crp, ldh, tropo, ferr, absolute, ctscan, abg }
     } = this;
+
 /*this is how the data is being sent in json format*/
+
     try {
       fetch(`${MOCK_SERVICE}/calculator`, {
         method: 'POST',
