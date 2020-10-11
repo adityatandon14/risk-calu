@@ -16,11 +16,13 @@ export class About extends Component {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <div className="nav-links">
+            <div className="nav-links mr-auto" >
               <ul className="navbar-nav mr-auto">
               <li> 
-              <Link to="/about">ABOUTUS </Link> 
+           <Link to="/about">ABOUTUS </Link> 
+           <br></br>
             </li> 
+               <li> {" "}   </li>
             <li> 
            <Link to="/login"> LOGIN</Link> 
            </li> 

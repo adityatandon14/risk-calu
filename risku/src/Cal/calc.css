@@ -8,9 +8,9 @@ h3 {
 }
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 .navbar {
-  background-color: #3c4d5f;
+  color: #3c4d5f;
   height: 80px;
-  color: white;
+  background-color: white;
   margin: 0;
 
   text-align: center;
