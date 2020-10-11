@@ -8,6 +8,9 @@ localhost8000/api/userdata/id for existing button
 localhost8000/api/userdata for new patient button
 
 then when i submit calculator.js i to post that forms data on respective api
+
+Even i need to send the patient id to calculator.js file and udhar se on post request
+
 */
 const secform = () => (
   <form className="frm">
