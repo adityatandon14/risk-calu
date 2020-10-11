@@ -23,7 +23,7 @@ const styleLink = document.createElement('link');
 styleLink.rel = 'stylesheet';
 styleLink.href = 'https://cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.css';
 document.head.appendChild(styleLink);
-
+//these are the options for epidem dropdown
 const options = [
   {
     key: 'H/O PULMONARY DISEASE',
@@ -54,7 +54,7 @@ const MenuProps = {
     }
   }
 };
-
+//basic styling property using library functions
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'block',
@@ -85,7 +85,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const MOCK_SERVICE = 'http://localhost:3004';
-
+/*api ka name and defining all parameter*/
 export class Calculator extends Component {
   // const classes = useStyles();
   constructor() {
@@ -119,18 +119,20 @@ export class Calculator extends Component {
     };
     this.changeBind = this.changeBind.bind(this);
   }
+  /*for the checked box*/
   changeBind() {
     this.setState({ checked: !this.state.checked });
   }
+  /*for all the values getting filled*/
   handleChange = e => {
     const { id, value } = e.target;
     this.setState({ [id]: value });
   };
-
+/*dropdown ki values set ke lie*/
   handleDropDownChange = (e, { value }) => {
     this.setState({ drpdownValue: value });
   };
-
+/*this function is for units change if its sec unit multiply by 1000 and send the values*/
   handleLabFindings = e => {
     const { id, value } = e.target;
     const meaureToCheck = `measure_${id}`;
@@ -141,12 +143,12 @@ export class Calculator extends Component {
       this.setState({ [id]: value });
     }
   };
-
+/*form submit button*/
   handleSubmit = e => {
     const {
       state: { spo, heartRate, resRate, drpdownValue, ddimer, cpk, crp, ldh, tropo, ferr, absolute, ctscan, abg }
     } = this;
-
+/*this is how the data is being sent in json format*/
     try {
       fetch(`${MOCK_SERVICE}/calculator`, {
         method: 'POST',
@@ -186,6 +188,7 @@ export class Calculator extends Component {
           <div className="para-container">
             <div className="epidem-container col-md-6 col-sm-12 width=30% ">
               <h1 className="head">EPIDEMIOLOGY</h1>
+              
               <div className="yoyo">
                 <Dropdown
                   placeholder="Comorbidities"
@@ -365,6 +368,7 @@ export class Calculator extends Component {
               </div>
             </div>
           </div>
+          
           <div className="btype">
             <button type="submit" id="sub" onClick={this.handleSubmit}>
               CHECK PARAMETERS
