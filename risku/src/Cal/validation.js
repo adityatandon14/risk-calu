@@ -65,18 +65,18 @@ function Result_Low(count_epidem,count_vital,count_lab){
 function checkParam(){
     var count_epidem = 0,count_vital = 0,count_lab = 0;
     console.log("AGE:" + age);
-    console.log("respiratory rate:"+ rr);
-    console.log("heart rate" + hr)
-    console.log("supply of o2" + sp);
-    console.log("D Dimer:" + dd);
+    console.log("respiratory rate:"+ resrate);
+    console.log("heart rate" + heartrate)
+    console.log("supply of o2" + spo);
+    console.log("D Dimer:" + ddimer);
     console.log("CPK:" + cpk);
     console.log("CRP:" + crp);
     console.log("LDH:" + ldh);
-    console.log("TROPOPIN:" + tr);
-    console.log("FERRITIN:" + fr);
-    console.log("alc" + alc);
-    console.log("ct" + ct);
-    console.log("apg" + apg);
+    console.log("TROPOPIN:" + tropo);
+    console.log("FERRITIN:" + ferr);
+    console.log("alc" + absolute);
+    console.log("ct" + ctscan);
+    console.log("apg" + abg);
     if (age == null){
         var z = document.getElementById("sage");
         console.log(z.value);
