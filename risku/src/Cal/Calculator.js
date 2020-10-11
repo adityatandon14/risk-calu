@@ -375,6 +375,215 @@ export class Calculator extends Component {
             </button>
           </div>
         </form>
+
+        <div className="technicaldetails">
+            <div className="col">
+              <div data-aos="fade-up" className="aos-init aos-animate">
+                <div
+                  id="mortality-model-desc"
+                  className="elevation-3 jumbotron"
+                  style={{ padding: "4%" }}
+                >
+                  <h2>Technical details</h2>
+                  <div>
+                    <p>
+                      Our model was trained on 2781 patients (out of whom 25%
+                      deceased) hospitalized due to COVID-19 in:{" "}
+                    </p>
+                  </div>
+                  <div>
+                    <ul>
+                      <li>
+                        The Italian city of Cremona (
+                        <a href="https://www.asst-cremona.it/en/home">
+                          Azienda Socio-Sanitaria Territoriale di Cremona
+                        </a>
+                        ). Cremona is one of the most severely hit italian
+                        provinces in Lombardy with several thousand positive
+                        cases to date.
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <ul>
+                      <li>
+                        <a href="https://www.fundacionhm.com/">HM Hospitals</a>,
+                        a leading Hospital Group in Spain with 15 general
+                        hospitals and 21 clinical centres that cover the regions
+                        of Madrid, Galicia, and LeÃ³n.{" "}
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <ul>
+                      <li>
+                        <a href="https://hartfordhealthcare.org">
+                          Hartford HealthCare
+                        </a>
+                        , a major hospital network serving patients throughout
+                        Connecticut (USA).{" "}
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p>
+                      Given our training population, we are most confident about
+                      the relevance of our model to: (a) Western population; (b)
+                      Severe to acute patients; (c) Congested hospitals.{" "}
+                    </p>
+                  </div>
+                  <hr />
+                  <div>
+                    The calculator is based on{" "}
+                    <a href="https://xgboost.readthedocs.io/">
+                      XGBoost classifier.
+                    </a>
+                    <br />
+                    The out of sample area under the curve (AUC) on 309 patients
+                    (out of whom 25% deceased) is{" "}
+                    <span
+                      style={{ color: "rgb(128, 0, 32)", fontWeight: "bold" }}
+                    >
+                      {" "}
+                      0.82
+                    </span>
+                    .<br />
+                    When features are missing, the calculator will impute and
+                    report their values.
+                  </div>
+                  <br />
+                  <div>
+                    <p>
+                      We use{" "}
+                      <a href="https://github.com/slundberg/shap">SHAP plots</a>{" "}
+                      to interpret the XGBoost models. The SHAP plot below
+                      summarizes features by their importance and
+                      directionality. Features are ordered by decreasing
+                      significance, with the most important feature listed at
+                      the top of the plot. For a given feature, the
+                      corresponnding row shows a plot of the feature's impact on
+                      the prediction as the value ranges from its lowest (blue)
+                      to highest (red) value. Higher SHAP values correspond to
+                      increased likelihood of having a positive outcome (i.e.
+                      mortality or infection). Thus, features with the color
+                      scale oriented blue to red (moving left to right) have
+                      increasing risk as the feature increases, such as Age.
+                      Features oriented red to blue have decreasing risk as the
+                      feature increases, such as Oxygen Saturation. Note: gender
+                      is encoded as a binary value (0=Male, 1=Female), so
+                      "lower" values of gender correspond to male patients.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="graph">
+            <img
+              src="https://www.covidanalytics.io/assets/risk_calculators/mortality/model_without_lab.jpg"
+              width="60%"
+              height="20%"
+              className="center"
+              dispaly="center"
+            />
+          </div>
+          <div className="information">
+            <pre>
+              Moderate and high risk patients require aggressive monitoring of
+              inflammatory milieu or up triaging. Anti-inflammatory therapy with
+              steroid and Anticoagulation recommended.{"\n"}*Please note these
+              are mere recommendation from the author based on the available
+              scientific recommendation and no means intended to replace local
+              guidelines.{"\n"}
+              {"\n"}* compulsary{"\n"}
+              {"            "}
+            </pre>
+          </div>
+          <div id="myModal" className="modal">
+            {/* Modal content */}
+            <div className="modal-content">
+              <div className="modal-header">
+                <span className="close">Ã—</span>
+                <div className="respa">
+                  <span id="risk_fact" className="display_high" />
+                </div>
+              </div>
+              <div className="modal-body">
+                <div className="respa">
+                  Epidemiology:
+                  <span id="span1" />
+                </div>
+                <div className="respa">
+                  Vital Signs:
+                  <span id="span2" />
+                </div>
+                <div className="respa">
+                  Lab-Findings:
+                  <span id="span3" />
+                </div>
+              </div>
+              <div className="modal-footer">
+                <h2>PATIENT IS AT HIGH RISK</h2>
+              </div>
+            </div>
+          </div>
+          <div id="myModal1" className="modal1">
+            {/* Modal content */}
+            <div className="modal-content1">
+              <div className="modal-header1">
+                <span className="close1">Ã—</span>
+                <div className="respa">
+                  <span id="rissk_fact" className="display_low" />
+                </div>
+              </div>
+              <div className="modal-body1">
+                <div className="respa">
+                  Epidemiology:
+                  <span id="sspan1" />
+                </div>
+                <div className="respa">
+                  Vital Signs:
+                  <span id="sspan2" />
+                </div>
+                <div className="respa">
+                  Lab-Findings:
+                  <span id="sspan3" />
+                </div>
+              </div>
+              <div className="modal-footer1">
+                <h2>PATIENT IS AT LOW RISK</h2>
+              </div>
+            </div>
+          </div>
+          <div id="myModal2" className="modal2">
+            {/* Modal content */}
+            <div className="modal-content2">
+              <div className="modal-header2">
+                <span className="close2">Ã—</span>
+                <div className="respa">
+                  <span id="rismsk_fact" className="display_moderate" />
+                </div>
+              </div>
+              <div className="modal-body2">
+                <div className="respa">
+                  Epidemiology:
+                  <span id="smspan1" />
+                </div>
+                <div className="respa">
+                  Vital Signs:
+                  <span id="smspan2" />
+                </div>
+                <div className="respa">
+                  Lab-Findings:
+                  <span id="smspan3" />
+                </div>
+              </div>
+              <div className="modal-footer2">
+                <h2>PATIENT AT MODERATE RISK</h2>
+              </div>
+            </div>
+          </div>
+          <div className="footer">Made with love from @MIT_MANIPAL</div>
       </div>
       //</div>
     );
