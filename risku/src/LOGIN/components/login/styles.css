@@ -1,0 +1,14 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+  }
+  .frm {
+    padding: 5%;
+    border: 5px solid black;
+    margin: 20%;
+  }
+  .btn {
+    margin: 3px;
+    color: blue;
+  }
+  
