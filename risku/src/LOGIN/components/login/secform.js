@@ -48,13 +48,9 @@ Even i need to send the patient id to calculator.js file and udhar se on post re
      const {
        props: { history },
      } = this;
-    history.push(
-      {
-      pathname:"/calculator" ,
-       //state:id 
-      }
-    )
-  }
+    history.push(`/calculator`, { PatientId:id});
+    
+    }
   render() {
     const { Ptid } = this.state;
 
