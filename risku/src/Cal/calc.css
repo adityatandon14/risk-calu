@@ -6,6 +6,23 @@ h3 {
   font-family: 'Montserrat', sans-serif;
   opacity: 1.5;
 }
+.ruby{
+  margin: 20px;
+  font-size: medium;
+}
+.box1{
+   margin-left: 30%;
+   text-align: left;
+   
+ 
+}
+.box1 input{
+  text-align: right;
+}
+.box2{
+  margin-left: 30%;
+  text-align: left;
+}
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 .navbar {
   color: #3c4d5f;
@@ -401,6 +418,7 @@ pre {
   }
   .lab {
     margin-left: 10px;
+    text-align: left;
   }
   #dd {
     margin-left: 25px;

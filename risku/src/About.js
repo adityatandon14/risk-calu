@@ -18,14 +18,22 @@ export class About extends Component {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <div className="nav-links mr-auto" >
               <ul className="navbar-nav mr-auto">
-              <li> 
-           <Link to="/about">ABOUTUS </Link> 
+              <li className="lefto"> 
+           <Link to="/calculator">RISK CALCULATOR </Link> {''}
            <br></br>
             </li> 
                <li> {" "}   </li>
             <li> 
            <Link to="/login"> LOGIN</Link> 
            </li> 
+           <li> {" "}   </li>
+           <li> 
+          <Link to="/aboutus">ABOUT</Link> 
+          </li> 
+          <li> {" "}   </li>
+          <li> 
+         <Link to="/Certificates"> CERTIFICATION</Link> 
+         </li> 
              </ul>
               
             </div>

@@ -55,7 +55,7 @@ h1 {
   height: 90vh;
   width: 100vw;
   margin-bottom: 0rem;
-  padding-top: 45vh;
+  padding-top: 60vh;
   background-image: url('https://www.economist.com/sites/default/files/images/print-edition/20200222_IRD001_0.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -186,10 +186,18 @@ input[type='submit']:hover {
 }
 ul {
   list-style: none;
+  padding:14px
+}
+.lefto{
+  margin-left:20px;
 }
 
 a {
   text-decoration: none;
+  padding:30px;
+  font-size: large;
+ 
+  
 }
 #SendMessage {
   margin-bottom: 2.5%;
